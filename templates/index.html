@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% from 'form_field_macro.html' import form_field %}
+{% block content %}
+    <div style="text-align: center;">
+    <br><br><br>
+    <h1>Welcome to Intelligent Q&A System</h1>
+    <br>
+    <br>
+        <img src="{{ url_for('static', filename='avatar.JPG') }}" style="width: 7%; max-width: 500px;"><br><br>
+    <h3>花無果，六葉不相續</h3>
+    <h3>彼岸流火，雪海陽焰</h3><br>
+    <form method='POST'>
+    {{ form.csrf_token }}
+    {{ form_field(form.userID) }}<br><br>
+    {{ form.submit }}
+    </form>
+    </div>
+
+
+{% endblock %}

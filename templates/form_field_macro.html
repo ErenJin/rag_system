@@ -1,0 +1,7 @@
+{% macro form_field(field) %}
+{{ field.label }}
+{{ field }}
+{% for message in field.errors %}
+    <p style="color: #FF0000;">{{ message }}</p>
+{% endfor %}
+{% endmacro %}
