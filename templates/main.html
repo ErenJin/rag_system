@@ -2,45 +2,78 @@
 {% block content %}
 
 <style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f4f4f9;
+    }
     .chat-container {
-        width: 300px;
+        width: 80vw; /* 使用视窗宽度单位 */
+        height: 80vh; /* 使用视窗高度单位 */
         border: 1px solid #ccc;
         border-radius: 5px;
         overflow: hidden;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        background-color: #288CFF; /* Match the background color */
-        color: white; /* Ensure text inside chat container is white */
+        background-color: #f4f4f9;
+        color: black;
+        display: flex;
+        flex-direction: column;
     }
     .messages {
         padding: 10px;
-        max-height: 300px;
+        flex: 1;
         overflow-y: auto;
-        background-color: #fff; /* White background for messages */
-        color: black; /* Black text for messages */
+        background-color: #fff;
     }
     .message.user {
-        text-align: right;
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 10px;
     }
     .message.bot {
-        text-align: left;
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 10px;
+    }
+    .message-box {
+        max-width: 70%;
+        padding: 10px;
+        border-radius: 10px;
+        line-height: 1.4;
+    }
+    .message.user .message-box {
+        background-color: #dcf8c6;
+        align-self: flex-end;
+    }
+    .message.bot .message-box {
+        background-color: #e2e2e2;
+        align-self: flex-start;
     }
     .input-area {
         display: flex;
         border-top: 1px solid #eee;
+        padding: 10px;
+        background-color: #f4f4f9;
     }
     .input-area input {
         flex: 1;
         padding: 10px;
         outline: none;
-        border: none;
-        background-color: #f4f4f9; /* Light background for input */
-        color: black; /* Black text for input */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        color: black;
     }
     .input-area button {
-        padding: 10px;
+        padding: 10px 20px;
+        margin-left: 10px;
         background-color: #007bff;
         color: white;
         border: none;
+        border-radius: 5px;
         cursor: pointer;
     }
     .input-area button:hover {
@@ -93,10 +126,16 @@
         const messagesContainer = document.getElementById('messages');
         const messageElement = document.createElement('div');
         messageElement.className = `message ${sender}`;
-        messageElement.textContent = text;
+
+        const messageBox = document.createElement('div');
+        messageBox.className = 'message-box';
+        messageBox.textContent = text;
+
+        messageElement.appendChild(messageBox);
         messagesContainer.appendChild(messageElement);
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
 </script>
+
 
 {% endblock %}
