@@ -1,5 +1,5 @@
 from rag_system import app
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request, jsonify
 from forms import LoginForm
 
 @app.route('/',methods=['GET', 'POST'])
@@ -11,10 +11,30 @@ def index():
     return render_template('index.html', form=login_form)
 
 
-@app.route('/main')
+@app.route('/main', methods=['GET', 'POST'])
+
     # 主功能页面
 def main():
+    if request.method == 'POST':
+        data = request.get_json()
+        if data is None:
+            return jsonify({'error': 'Invalid JSON'}), 400
+
+        user_message = data.get('message')
+        if user_message is None:
+            return jsonify({'error': 'Missing message key'}), 400
+
+        # Here you can process the message and generate a response.
+        # For simplicity, we'll just echo the user's message back.
+        bot_response = f"Echo: {user_message}"
+
+        return jsonify({'response': bot_response})
+
     return render_template('main.html')
+
+
+app.run(debug=True)
+
 
 
 app.run(debug=True)

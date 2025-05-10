@@ -1,12 +1,56 @@
 {% extends 'base.html' %}
 {% from 'form_field_macro.html' import form_field %}
 {% block content %}
-    <div style="text-align: center;">
+
+<style>
+    /* Additional styles for the login page */
+    .login-container {
+        text-align: center;
+        background-color: #288CFF; /* Match the background color */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        margin-top: 50px; /* Adjust position to move it up */
+    }
+    h1, h3 {
+        color: white; /* Ensure headings are white */
+        font-size: 24px; /* Increase font size */
+    }
+    img {
+        width: 7%;
+        max-width: 500px;
+    }
+    form {
+        margin-top: 20px;
+    }
+    input[type="text"] {
+        width: 80%; /* Shorten input box width */
+        background-color: #f4f4f9; /* Light background for input */
+        color: black; /* Black text for input */
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+    }
+    button {
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="login-container">
     <br><br><br>
     <h1>Welcome to Intelligent Q&A System</h1>
     <br>
     <br>
-        <img src="{{ url_for('static', filename='avatar.JPG') }}" style="width: 7%; max-width: 500px;"><br><br>
+        <img src="{{ url_for('static', filename='avatar.JPG') }}" style="width: 20%; max-width: 500px;"><br><br>
     <h3>花無果，六葉不相續</h3>
     <h3>彼岸流火，雪海陽焰</h3><br>
     <form method='POST'>
@@ -14,7 +58,7 @@
     {{ form_field(form.userID) }}<br><br>
     {{ form.submit }}
     </form>
-    </div>
+</div>
 
 
 {% endblock %}

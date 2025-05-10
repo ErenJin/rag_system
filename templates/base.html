@@ -2,13 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block title %} {% endblock %}
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <style>body
-  {background-color: #288CFF;}
-  .white-text {color: white;}
-  body {color: white;}
-  </style>
+
+    {% block styles %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #288CFF;
+            color: white; /* Set the default text color to white */
+        }
+        .white-text {
+            color: white; /* Ensure any specific elements also have white text */
+        }
+        /* Add additional styles as needed */
+    </style>
+    {% endblock %}
+
 </head>
 <body>
 {% block content %} {% endblock %}
