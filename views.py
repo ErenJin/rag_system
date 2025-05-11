@@ -21,7 +21,7 @@ def main():
         if data is None:
             return jsonify({'error': 'Invalid JSON'}), 400
 
-        user_message = data.get('message')
+        user_message = str(data.get('message'))
         if user_message is None:
             return jsonify({'error': 'Missing message key'}), 400
 
