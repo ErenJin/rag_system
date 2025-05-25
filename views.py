@@ -1,7 +1,7 @@
 from rag_system import app
 from flask import Flask, render_template, redirect, url_for, request, jsonify
-from forms import LoginForm
-from rag.function import process_user_message
+from rag_system.forms import LoginForm
+from rag_system.rag.function import process_user_message
 
 @app.route('/',methods=['GET', 'POST'])
     # 登录页面
@@ -36,5 +36,4 @@ def main():
     return render_template('main.html')
 
 
-app.run(debug=True)
 

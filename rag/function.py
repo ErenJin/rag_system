@@ -5,16 +5,21 @@ from langchain_chroma import Chroma
 from langchain_community.document_loaders import DirectoryLoader, PyPDFDirectoryLoader
 from langchain_text_splitters import CharacterTextSplitter
 from langchain_core.runnables import RunnableParallel, RunnablePassthrough
+import os
 
+## 设置数据库
 
-#设置数据库
+# 动态获取项目根目录（rag_system/rag_system/）
+base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+persist_path = os.path.join(base_dir, 'rag_system', 'db')
+
 vectorstore = Chroma(
     embedding_function=embeddings_model,
-    persist_directory='./db',
+    persist_directory=persist_path,
 )
 
 
-# #加载文件，并向量化
+#加载文件，并向量化
 # loader = PyPDFDirectoryLoader('./files')
 # docs = loader.load()
 #
@@ -27,7 +32,7 @@ vectorstore = Chroma(
 # )
 #
 # to_vectorstore = text_splitter.split_documents(docs)
-
+#
 # vectorstore.add_documents(to_vectorstore)
 
 

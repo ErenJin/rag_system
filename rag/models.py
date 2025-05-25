@@ -44,4 +44,5 @@ class CustomLLM_Siliconflow:
 #     huggingfacehub_api_token=API_KEY,
 # )
 
+
 embeddings_model = HuggingFaceEmbeddings(model_name='/Users/jt/Downloads/bge-large-zh-v1.5')
